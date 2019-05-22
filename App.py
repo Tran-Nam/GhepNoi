@@ -10,26 +10,30 @@ class App(object):
         self.addr = addr
         self.port = port 
         self.sock.connect((self.addr, self.port))
-    """
+    
     def send(self, text):
         text = convert(text)
         data = '1' + text + ' '
         self.sock.send(data)
-        print('Sent {}'.format(text))"""
+        print('Sent {}'.format(text))
     
-    # use file txt as input to send it to board
-    
-    def send(self, path='data', filename='G.txt'):
+    # use file G.txt as input to send it to board 
+    def send_to_show(self, path='data', filename='G.txt'):
+
         if filename in os.listdir(path):
+
+            # reach content to show
             abs_path = os.path.join(path, filename)
             content = open(abs_path, 'r').read()
             content = convert(content)
-            # os.remove(abs_path)
-            if content == None or content == "":
+
+            if content is None or content == "":
                 return
+
+            # empty file
             with open(abs_path, 'w') as f:
                 f.write("")
-            content = '1' + content + ' '
+            
             self.sock.send(content)
             print('Send successful!', content)
 
