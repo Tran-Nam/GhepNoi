@@ -1,7 +1,7 @@
 import bluetooth
 import time
 from App import App
-from notice import notice
+# from notice import notice
 import threading
 # import lightblue
 
