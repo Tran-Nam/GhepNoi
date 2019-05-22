@@ -7,7 +7,7 @@ import threading
 
 # need turn on blurtooth before call
 # 98:D3:31:F9:40:8A
-base = '98:D3:31:F9:40:8A'
+addr = '98:D3:31:F9:40:8A'
 """
 print("Searching device ...")
 nearby_device = bluetooth.discover_devices(lookup_names=True)
@@ -25,21 +25,19 @@ for device in nearby_device:
     if name=='HC05':
         break """
 
-# if name=='HC05':
-    # app = App(addr)
-app = App(base)
+
+app = App(addr)
 
 while True:
-    # show in led board
 
-    app.send()
+    app.send_to_show()
 
-    
+    """
     # notice infor next patient
     b = threading.Thread(target=notice, args=())
     b.start()
-    b.join()
+    b.join()"""
     
     
     time.sleep(0.5)
-app.close()
+# app.close()
