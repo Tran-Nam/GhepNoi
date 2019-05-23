@@ -14,12 +14,10 @@ class App(object):
         print("Connected!")
     
     def send_content(self, text):
-        print('c')
         text = convert(text)
         data = '1' + text + ' '
-        print('b')
         self.sock.send(data)
-        print('Sent {}'.format(data))
+        print('Sent {}'.format(text))
     
     # use file G.txt as input to send it to board 
     def send_to_show(self, path='data', filename='G.txt'):
@@ -29,6 +27,8 @@ class App(object):
             # reach content to show
             abs_path = os.path.join(path, filename)
             content = open(abs_path, 'r').read()
+
+            # convert to unsigned word
             content = convert(content)
 
             if content is None or content == "":
@@ -39,8 +39,6 @@ class App(object):
                 f.write("")
             
             self.send_content(content)
-            # print('a')
-            # print('Send successful!', content)
 
     def close(self):
         self.sock.close()
