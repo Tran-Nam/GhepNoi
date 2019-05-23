@@ -9,13 +9,17 @@ class App(object):
     def __init__(self, addr, port=1):
         self.addr = addr
         self.port = port 
+        print(self.addr, self.port)
         self.sock.connect((self.addr, self.port))
+        print("Connected!")
     
-    def send(self, text):
+    def send_content(self, text):
+        print('c')
         text = convert(text)
         data = '1' + text + ' '
+        print('b')
         self.sock.send(data)
-        print('Sent {}'.format(text))
+        print('Sent {}'.format(data))
     
     # use file G.txt as input to send it to board 
     def send_to_show(self, path='data', filename='G.txt'):
@@ -34,8 +38,9 @@ class App(object):
             with open(abs_path, 'w') as f:
                 f.write("")
             
-            self.sock.send(content)
-            print('Send successful!', content)
+            self.send_content(content)
+            # print('a')
+            # print('Send successful!', content)
 
     def close(self):
         self.sock.close()
