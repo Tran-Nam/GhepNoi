@@ -2,7 +2,7 @@ import bluetooth
 import time
 from App import App
 # from notice import notice
-import threading
+# import threading
 # import lightblue
 
 # need turn on blurtooth before call

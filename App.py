@@ -9,7 +9,7 @@ class App(object):
     def __init__(self, addr, port=1):
         self.addr = addr
         self.port = port 
-        print(self.addr, self.port)
+        # print(self.addr, self.port)
         self.sock.connect((self.addr, self.port))
         print("Connected!")
     
